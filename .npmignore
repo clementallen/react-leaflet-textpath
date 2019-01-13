@@ -1,0 +1,10 @@
+node_modules/
+__tests__/
+__mocks__/
+coverage/
+.babelrc
+.eslintrc.json
+.gitignore
+.travis.yml
+jest.config.js
+test.config.js
