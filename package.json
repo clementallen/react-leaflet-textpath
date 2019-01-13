@@ -1,6 +1,6 @@
 {
     "name": "react-leaflet-textpath",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "description": "React wrapper of leaflet-textpath",
     "main": "dist/index.js",
     "module": "src/index.js",
