@@ -19,4 +19,4 @@ script:
     - npm run build
 
 after_script:
-    - ./cc-test-reporter after-build -r bccee3e48a0b2b43d77e5483ed447f6fc7fa68ed8c2ac5eeda0bdc4ca418d203 --exit-code $TRAVIS_TEST_RESULT
+    - ./cc-test-reporter after-build -r e7bff3ee11b9ccb31144314db0fe9332d3f698c37769733d4cd50235eb9b12e2 --exit-code $TRAVIS_TEST_RESULT
