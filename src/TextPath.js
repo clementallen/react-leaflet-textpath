@@ -16,33 +16,33 @@ function getOptions({
     ...options
 }) {
     return {
-        polyline: { positions, options },
-        textpath: {
-            text,
-            repeat,
-            center,
-            below,
-            offset,
-            orientation,
-            attributes
-        }
+        positions,
+        options,
+        text,
+        repeat,
+        center,
+        below,
+        offset,
+        orientation,
+        attributes
     };
 }
 
 export default class TextPath extends Path {
     createLeafletElement(props) {
-        const {
-            polyline: { positions, options },
-            textpath: { text, ...pathOptions }
-        } = getOptions(props);
+        const { positions, options, text, ...pathOptions } = getOptions(props);
         const line = new L.Polyline(positions, options);
         line.setText(text, pathOptions);
         return line;
     }
 
     updateLeafletElement(fromProps, toProps) {
-        const { text, ...options } = getOptions(toProps).textpath;
+        const { positions, options, text, ...pathOptions } = getOptions(
+            toProps
+        );
         this.leafletElement.setText(null);
-        this.leafletElement.setText(text, options);
+        this.leafletElement.setLatLngs(positions);
+        this.leafletElement.setStyle(options);
+        this.leafletElement.setText(text, pathOptions);
     }
 }
