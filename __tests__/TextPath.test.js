@@ -4,6 +4,8 @@ import L from 'leaflet';
 import TextPath from '../src/index';
 
 const setTextSpy = jest.fn();
+const setLatLngsSpy = jest.fn();
+const setStyleSpy = jest.fn();
 const mockPositions = [51.505, -0.09];
 const mockText = 'Mock Text';
 const mockOptions = {
@@ -28,7 +30,9 @@ const mockPopulatedOptions = {
 const PolylineSpy = jest.spyOn(L, 'Polyline').mockImplementation(() => {
     return {
         _layerAdd: () => {},
-        setText: setTextSpy
+        setText: setTextSpy,
+        setLatLngs: setLatLngsSpy,
+        setStyle: setStyleSpy
     };
 });
 
@@ -106,18 +110,16 @@ describe('<TextPath />', () => {
     });
 
     describe('props change', () => {
-        it('should call setText() with null to clear the existing text if the props change', () => {
+        it('should call setText() with null to clear the existing text', () => {
             const wrapper = mount(
                 <Map>
                     <TextPath text={mockText} />
                 </Map>
             );
-            updateProps(wrapper, {
-                orientation: 'flip'
-            });
+            updateProps(wrapper, { orientation: 'flip' });
             expect(setTextSpy).toHaveBeenNthCalledWith(2, null);
         });
-        it('should call setText() with the new props if the props change', () => {
+        it('should call setText() with the new text and options', () => {
             const wrapper = mount(
                 <Map>
                     <TextPath
@@ -127,13 +129,40 @@ describe('<TextPath />', () => {
                     />
                 </Map>
             );
-            updateProps(wrapper, {
-                orientation: 'flip'
-            });
+            updateProps(wrapper, { orientation: 'flip' });
             expect(setTextSpy).toHaveBeenLastCalledWith(mockText, {
                 ...mockPopulatedOptions,
                 orientation: 'flip'
             });
+        });
+        it('should call setLatLngs() with the new positions', () => {
+            const mockNewPositions = [52.505, -1.09];
+            const wrapper = mount(
+                <Map>
+                    <TextPath
+                        text={mockText}
+                        positions={mockPositions}
+                        {...mockPopulatedOptions}
+                    />
+                </Map>
+            );
+            updateProps(wrapper, { positions: mockNewPositions });
+            expect(setLatLngsSpy).toBeCalledWith(mockNewPositions);
+        });
+        it('should call setStyle() with the new styles', () => {
+            const wrapper = mount(
+                <Map>
+                    <TextPath
+                        text={mockText}
+                        positions={mockPositions}
+                        {...mockPopulatedOptions}
+                        color="white"
+                        weight={2}
+                    />
+                </Map>
+            );
+            updateProps(wrapper, { color: 'black' });
+            expect(setStyleSpy).toBeCalledWith({ color: 'black', weight: 2 });
         });
     });
 });
