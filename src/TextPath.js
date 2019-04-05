@@ -36,10 +36,8 @@ export default class TextPath extends Path {
         return line;
     }
 
-    updateLeafletElement(fromProps, toProps) {
-        const { positions, options, text, ...pathOptions } = getOptions(
-            toProps
-        );
+    updateLeafletElement(fromProps, props) {
+        const { positions, options, text, ...pathOptions } = getOptions(props);
         this.leafletElement.setText(null);
         this.leafletElement.setLatLngs(positions);
         this.leafletElement.setStyle(options);
