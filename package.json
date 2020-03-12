@@ -32,26 +32,26 @@
         "react-leaflet-textpath"
     ],
     "devDependencies": {
-        "@babel/cli": "^7.8.3",
-        "@babel/core": "^7.8.3",
-        "@babel/preset-env": "^7.8.3",
+        "@babel/cli": "^7.8.4",
+        "@babel/core": "^7.8.7",
+        "@babel/preset-env": "^7.8.7",
         "@babel/preset-react": "^7.8.3",
         "auto-changelog": "^1.16.2",
         "babel-core": "^7.0.0-bridge.0",
-        "babel-eslint": "^10.0.3",
-        "babel-jest": "^24.9.0",
+        "babel-eslint": "^10.1.0",
+        "babel-jest": "^25.1.0",
         "enzyme": "^3.11.0",
         "enzyme-adapter-react-16": "^1.15.2",
         "eslint": "^6.8.0",
         "eslint-plugin-prettier": "^3.1.2",
-        "eslint-plugin-react": "^7.17.0",
-        "jest": "^24.9.0",
+        "eslint-plugin-react": "^7.19.0",
+        "jest": "^25.1.0",
         "leaflet": "^1.6.0",
-        "np": "^5.2.1",
+        "np": "^6.2.0",
         "prettier": "^1.19.1",
-        "react": "^16.12.0",
-        "react-dom": "^16.12.0",
-        "react-leaflet": "^2.6.1"
+        "react": "^16.13.0",
+        "react-dom": "^16.13.0",
+        "react-leaflet": "^2.6.2"
     },
     "peerDependencies": {
         "leaflet": "^1.0.0",
@@ -60,6 +60,6 @@
         "react-leaflet": "^2.0.0"
     },
     "dependencies": {
-        "leaflet-textpath": "^1.2.0"
+        "leaflet-textpath": "^1.2.3"
     }
 }
