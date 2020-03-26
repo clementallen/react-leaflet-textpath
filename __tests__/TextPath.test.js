@@ -14,17 +14,17 @@ const mockOptions = {
     center: undefined,
     offset: undefined,
     orientation: undefined,
-    repeat: undefined
+    repeat: undefined,
 };
 const mockPopulatedOptions = {
     attributes: {
-        dy: '50%'
+        dy: '50%',
     },
     below: true,
     center: true,
     offset: 5,
     orientation: 20,
-    repeat: true
+    repeat: true,
 };
 
 const PolylineSpy = jest.spyOn(L, 'Polyline').mockImplementation(() => {
@@ -32,13 +32,13 @@ const PolylineSpy = jest.spyOn(L, 'Polyline').mockImplementation(() => {
         _layerAdd: () => {},
         setText: setTextSpy,
         setLatLngs: setLatLngsSpy,
-        setStyle: setStyleSpy
+        setStyle: setStyleSpy,
     };
 });
 
 function updateProps(wrapper, props) {
     wrapper.setProps({
-        children: cloneElement(wrapper.props().children, props)
+        children: cloneElement(wrapper.props().children, props),
     });
 }
 
@@ -68,7 +68,7 @@ describe('<TextPath />', () => {
                 </Map>
             );
             expect(PolylineSpy).toBeCalledWith(mockPositions, {
-                color: 'white'
+                color: 'white',
             });
         });
         it('should extend the react-leaflet Path component', () => {
@@ -77,12 +77,9 @@ describe('<TextPath />', () => {
                     <TextPath />
                 </Map>
             );
-            expect(
-                wrapper
-                    .find(TextPath)
-                    .children()
-                    .instance()
-            ).toBeInstanceOf(Path);
+            expect(wrapper.find(TextPath).children().instance()).toBeInstanceOf(
+                Path
+            );
         });
     });
 
@@ -132,7 +129,7 @@ describe('<TextPath />', () => {
             updateProps(wrapper, { orientation: 'flip' });
             expect(setTextSpy).toHaveBeenLastCalledWith(mockText, {
                 ...mockPopulatedOptions,
-                orientation: 'flip'
+                orientation: 'flip',
             });
         });
         it('should call setLatLngs() with the new positions', () => {
