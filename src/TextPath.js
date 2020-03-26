@@ -24,7 +24,7 @@ function getOptions({
         below,
         offset,
         orientation,
-        attributes
+        attributes,
     };
 }
 
