@@ -7,14 +7,13 @@
 [![](https://img.shields.io/david/dev/clementallen/react-leaflet-textpath.svg?style=flat-square)](https://david-dm.org/clementallen/react-leaflet-textpath?type=dev)
 [![](https://img.shields.io/codeclimate/coverage/clementallen/react-leaflet-textpath.svg?style=flat-square)](https://codeclimate.com/github/clementallen/react-leaflet-textpath)
 [![](https://img.shields.io/codeclimate/maintainability/clementallen/react-leaflet-textpath.svg?style=flat-square)](https://codeclimate.com/github/clementallen/react-leaflet-textpath)
-[![Greenkeeper badge](https://img.shields.io/badge/Greenkeeper-enabled-brightgreen.svg?style=flat-square)](https://greenkeeper.io/)
 
 React wrapper of [leaflet-textpath](https://github.com/makinacorpus/Leaflet.TextPath)
 for [react-leaflet](https://github.com/PaulLeCam/react-leaflet).
 
 Polyline with text for [Leaflet](https://leafletjs.com) maps. Extends [L.Polyline](http://leafletjs.com/reference.html#polyline).
 
-_Tested with Leaflet 1.4.0 and React-Leaflet 2.2.0_
+_Tested with Leaflet 1.6.0 and React-Leaflet 2.7.0_
 
 ## Installation
 
