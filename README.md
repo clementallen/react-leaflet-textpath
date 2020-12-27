@@ -13,7 +13,7 @@ for [react-leaflet](https://github.com/PaulLeCam/react-leaflet).
 
 Polyline with text for [Leaflet](https://leafletjs.com) maps. Extends [L.Polyline](http://leafletjs.com/reference.html#polyline).
 
-_Tested with Leaflet 1.6.0 and React-Leaflet 2.7.0_
+_Most recently tested with Leaflet 1.7.1 and React-Leaflet 2.8.0_
 
 ## Installation
 
