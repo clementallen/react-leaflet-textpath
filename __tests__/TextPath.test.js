@@ -1,5 +1,5 @@
 import React, { cloneElement } from 'react';
-import { MapContainer, Polyline } from 'react-leaflet';
+import { MapContainer } from 'react-leaflet';
 import L from 'leaflet';
 import TextPath from '../src/index';
 
@@ -42,17 +42,6 @@ function updateProps(wrapper, props) {
     });
 }
 
-const getMethods = (obj) => {
-    let properties = new Set();
-    let currentObj = obj;
-    do {
-        Object.getOwnPropertyNames(currentObj).map((item) =>
-            properties.add(item)
-        );
-    } while ((currentObj = Object.getPrototypeOf(currentObj)));
-    return [...properties.keys()];
-};
-
 describe('<TextPath />', () => {
     beforeEach(() => {
         PolylineSpy.mockClear();
@@ -82,22 +71,6 @@ describe('<TextPath />', () => {
                 color: 'white',
             });
         });
-        /*
-        TODO: Revise this test. I can't seem to access the TextPath instance.
-        I think there's been a change to how the MapContainer works.
-
-        it('should extend the react-leaflet Path component', () => {
-            const wrapper = mount(
-                <MapContainer>
-                    <TextPath />
-                </MapContainer>
-            );
-            expect(wrapper.find(TextPath).children().instance()).toBeInstanceOf(
-                Polyline
-            );
-        });
-
-        */
     });
 
     describe('setText()', () => {
@@ -131,8 +104,8 @@ describe('<TextPath />', () => {
                 </MapContainer>
             );
             updateProps(wrapper, { orientation: 'flip' });
-            // TODO: There appears to be a bug where react-leaflet is recreating the element
-            // when its props update, but I couldn't reproduce it in a sandbox.
+            // TODO: react-leaflet is recreating the element instead of updating it.
+            // @see: https://github.com/PaulLeCam/react-leaflet/issues/830
             expect(setTextSpy).toHaveBeenNthCalledWith(/* 2 */ 3, null);
         });
         it('should call setText() with the new text and options', () => {
