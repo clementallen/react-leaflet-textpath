@@ -51,13 +51,13 @@
         "prettier": "^2.2.1",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
-        "react-leaflet": "^2.8.0"
+        "react-leaflet": "^3.0.0"
     },
     "peerDependencies": {
         "leaflet": "^1.0.0",
         "react": "^15.0.0 || ^16.0.0 || ^17.0.0",
         "react-dom": "^15.0.0 || ^16.0.0 || ^17.0.0",
-        "react-leaflet": "^2.0.0"
+        "react-leaflet": "^3.0.0"
     },
     "dependencies": {
         "leaflet-textpath": "^1.2.3"
