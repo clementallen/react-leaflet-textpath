@@ -2,7 +2,7 @@ import { createPathComponent } from '@react-leaflet/core';
 import { Polyline as LeafletPolyline } from 'leaflet';
 import 'leaflet-textpath';
 
-const createLeafletElement = (
+function createLeafletElement(
     {
         // Required TextPath attributes.
         text,
@@ -17,8 +17,8 @@ const createLeafletElement = (
         // PolyLine options.
         ...options
     },
-    ctx
-) => {
+    ctx,
+) {
     const instance = new LeafletPolyline(positions, options);
     instance.setText(text, {
         repeat,
@@ -29,9 +29,9 @@ const createLeafletElement = (
         attributes,
     });
     return { instance, context: { ...ctx, overlayContainer: instance } };
-};
+}
 
-const updateLeafletElement = (
+function updateLeafletElement(
     layer,
     {
         // Required TextPath attributes.
@@ -47,8 +47,8 @@ const updateLeafletElement = (
         // PolyLine options.
         ...options
     },
-    prevProps
-) => {
+    prevProps,
+) {
     // Set null first, to reset the text displayed.
     layer.setText(null);
     if (positions !== prevProps.positions) layer.setLatLngs(positions);
@@ -61,11 +61,6 @@ const updateLeafletElement = (
         orientation,
         attributes,
     });
-};
+}
 
-const TextPath = createPathComponent(
-    createLeafletElement,
-    updateLeafletElement
-);
-
-export default TextPath;
+export default createPathComponent(createLeafletElement, updateLeafletElement);

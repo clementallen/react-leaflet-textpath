@@ -52,7 +52,7 @@ describe('<TextPath />', () => {
             mount(
                 <MapContainer>
                     <TextPath text={mockText} positions={mockPositions} />
-                </MapContainer>
+                </MapContainer>,
             );
             expect(PolylineSpy).toBeCalledWith(mockPositions, {});
         });
@@ -65,7 +65,7 @@ describe('<TextPath />', () => {
                         positions={mockPositions}
                         color="white"
                     />
-                </MapContainer>
+                </MapContainer>,
             );
             expect(PolylineSpy).toBeCalledWith(mockPositions, {
                 color: 'white',
@@ -78,7 +78,7 @@ describe('<TextPath />', () => {
             mount(
                 <MapContainer>
                     <TextPath text={mockText} />
-                </MapContainer>
+                </MapContainer>,
             );
             expect(setTextSpy).toBeCalledWith(mockText, mockOptions);
         });
@@ -90,7 +90,7 @@ describe('<TextPath />', () => {
                         color="white"
                         {...mockPopulatedOptions}
                     />
-                </MapContainer>
+                </MapContainer>,
             );
             expect(setTextSpy).toBeCalledWith(mockText, mockPopulatedOptions);
         });
@@ -101,7 +101,7 @@ describe('<TextPath />', () => {
             const wrapper = mount(
                 <MapContainer>
                     <TextPath text={mockText} />
-                </MapContainer>
+                </MapContainer>,
             );
             updateProps(wrapper, { orientation: 'flip' });
             // TODO: react-leaflet is recreating the element instead of updating it.
@@ -116,7 +116,7 @@ describe('<TextPath />', () => {
                         {...mockPopulatedOptions}
                         color="white"
                     />
-                </MapContainer>
+                </MapContainer>,
             );
             updateProps(wrapper, { orientation: 'flip' });
             expect(setTextSpy).toHaveBeenLastCalledWith(mockText, {
@@ -133,7 +133,7 @@ describe('<TextPath />', () => {
                         positions={mockPositions}
                         {...mockPopulatedOptions}
                     />
-                </MapContainer>
+                </MapContainer>,
             );
             updateProps(wrapper, { positions: mockNewPositions });
             expect(setLatLngsSpy).toBeCalledWith(mockNewPositions);
@@ -148,7 +148,7 @@ describe('<TextPath />', () => {
                         color="white"
                         weight={2}
                     />
-                </MapContainer>
+                </MapContainer>,
             );
             updateProps(wrapper, { color: 'black' });
             expect(setStyleSpy).toBeCalledWith({ color: 'black', weight: 2 });
