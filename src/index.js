@@ -2,7 +2,6 @@ import { createPathComponent } from '@react-leaflet/core';
 import { Polyline as LeafletPolyline } from 'leaflet';
 import 'leaflet-textpath';
 
-// eslint-disable-next-line no-unused-vars
 const createLeafletElement = (
     {
         // Required TextPath attributes.
@@ -20,7 +19,6 @@ const createLeafletElement = (
     },
     ctx
 ) => {
-    // const { positions, options, text, ...pathOptions } = getOptions(props);
     const instance = new LeafletPolyline(positions, options);
     instance.setText(text, {
         repeat,
@@ -33,7 +31,6 @@ const createLeafletElement = (
     return { instance, context: { ...ctx, overlayContainer: instance } };
 };
 
-// eslint-disable-next-line no-unused-vars
 const updateLeafletElement = (
     layer,
     {
