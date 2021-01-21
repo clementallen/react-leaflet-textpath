@@ -15,10 +15,16 @@ Polyline with text for [Leaflet](https://leafletjs.com) maps. Extends [L.Polylin
 
 _Most recently tested with Leaflet 1.7.1 and React-Leaflet 2.8.0_
 
+## Requirements
+
+This version of the library supports React Leaflet v2. <br/>
+If you are using React Leaflet v3, please use the latest version of this library<br/>
+https://github.com/clementallen/react-leaflet-textpath/
+
 ## Installation
 
 ```bash
-npm install react-leaflet-textpath --save
+npm install react-leaflet-textpath@1 --save
 ```
 
 ## Usage
@@ -35,7 +41,10 @@ import TextPath from 'react-leaflet-textpath';
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     />
     <TextPath
-        positions={[[51.505, -0.09], [51.505, -0.02]]}
+        positions={[
+            [51.505, -0.09],
+            [51.505, -0.02],
+        ]}
         text="Polyline text"
         center
         offset={10}
@@ -55,7 +64,7 @@ import TextPath from 'react-leaflet-textpath';
     offset={10}
     orientation={20}
     attributes={{
-        'font-size': 20
+        'font-size': 20,
     }}
 />
 ```
