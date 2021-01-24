@@ -32,10 +32,10 @@ npm install react-leaflet-textpath --save
 ### Complete example with react-leaflet
 
 ```jsx
-import { Map, TileLayer } from 'react-leaflet';
+import { MapContainer, TileLayer } from 'react-leaflet';
 import TextPath from 'react-leaflet-textpath';
 
-<Map center={[51.505, -0.09]} zoom={13}>
+<MapContainer center={[51.505, -0.09]} zoom={13}>
     <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -49,7 +49,7 @@ import TextPath from 'react-leaflet-textpath';
         center
         offset={10}
     />
-</Map>;
+</MapContainer>;
 ```
 
 ### \<TextPath />
