@@ -4,7 +4,10 @@
         "es6": true,
         "jest": true
     },
-    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
     "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
@@ -13,9 +16,19 @@
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
-    "plugins": ["react", "prettier"],
+    "plugins": [
+        "react",
+        "prettier"
+    ],
     "rules": {
-        "prettier/prettier": ["error", { "singleQuote": true, "tabWidth": 4 }]
+        "prettier/prettier": [
+            "error",
+            {
+                "singleQuote": true,
+                "tabWidth": 4,
+                "trailingComma": "all"
+            }
+        ]
     },
     "globals": {
         "shallow": true,

@@ -1,5 +1,5 @@
 import React, { cloneElement } from 'react';
-import { Map, Path } from 'react-leaflet';
+import { MapContainer } from 'react-leaflet';
 import L from 'leaflet';
 import TextPath from '../src/index';
 
@@ -50,57 +50,47 @@ describe('<TextPath />', () => {
     describe('instantiation', () => {
         it('should instantiate L.Polyline with the expected arguments if only positions is provided', () => {
             mount(
-                <Map>
+                <MapContainer>
                     <TextPath text={mockText} positions={mockPositions} />
-                </Map>
+                </MapContainer>,
             );
             expect(PolylineSpy).toBeCalledWith(mockPositions, {});
         });
         it('should instantiate L.Polyline with the expected arguments if multiple are provided', () => {
             mount(
-                <Map>
+                <MapContainer>
                     <TextPath
                         text={mockText}
                         below
                         positions={mockPositions}
                         color="white"
                     />
-                </Map>
+                </MapContainer>,
             );
             expect(PolylineSpy).toBeCalledWith(mockPositions, {
                 color: 'white',
             });
-        });
-        it('should extend the react-leaflet Path component', () => {
-            const wrapper = mount(
-                <Map>
-                    <TextPath />
-                </Map>
-            );
-            expect(wrapper.find(TextPath).children().instance()).toBeInstanceOf(
-                Path
-            );
         });
     });
 
     describe('setText()', () => {
         it('should call setText() with the expected arguments if only text is provided', () => {
             mount(
-                <Map>
+                <MapContainer>
                     <TextPath text={mockText} />
-                </Map>
+                </MapContainer>,
             );
             expect(setTextSpy).toBeCalledWith(mockText, mockOptions);
         });
         it('should call setText() with the expected arguments if multiple are provided', () => {
             mount(
-                <Map>
+                <MapContainer>
                     <TextPath
                         text={mockText}
                         color="white"
                         {...mockPopulatedOptions}
                     />
-                </Map>
+                </MapContainer>,
             );
             expect(setTextSpy).toBeCalledWith(mockText, mockPopulatedOptions);
         });
@@ -109,22 +99,24 @@ describe('<TextPath />', () => {
     describe('props change', () => {
         it('should call setText() with null to clear the existing text', () => {
             const wrapper = mount(
-                <Map>
+                <MapContainer>
                     <TextPath text={mockText} />
-                </Map>
+                </MapContainer>,
             );
             updateProps(wrapper, { orientation: 'flip' });
-            expect(setTextSpy).toHaveBeenNthCalledWith(2, null);
+            // TODO: react-leaflet is recreating the element instead of updating it.
+            // @see: https://github.com/PaulLeCam/react-leaflet/issues/830
+            expect(setTextSpy).toHaveBeenNthCalledWith(/* 2 */ 3, null);
         });
         it('should call setText() with the new text and options', () => {
             const wrapper = mount(
-                <Map>
+                <MapContainer>
                     <TextPath
                         text={mockText}
                         {...mockPopulatedOptions}
                         color="white"
                     />
-                </Map>
+                </MapContainer>,
             );
             updateProps(wrapper, { orientation: 'flip' });
             expect(setTextSpy).toHaveBeenLastCalledWith(mockText, {
@@ -135,20 +127,20 @@ describe('<TextPath />', () => {
         it('should call setLatLngs() with the new positions', () => {
             const mockNewPositions = [52.505, -1.09];
             const wrapper = mount(
-                <Map>
+                <MapContainer>
                     <TextPath
                         text={mockText}
                         positions={mockPositions}
                         {...mockPopulatedOptions}
                     />
-                </Map>
+                </MapContainer>,
             );
             updateProps(wrapper, { positions: mockNewPositions });
             expect(setLatLngsSpy).toBeCalledWith(mockNewPositions);
         });
         it('should call setStyle() with the new styles', () => {
             const wrapper = mount(
-                <Map>
+                <MapContainer>
                     <TextPath
                         text={mockText}
                         positions={mockPositions}
@@ -156,7 +148,7 @@ describe('<TextPath />', () => {
                         color="white"
                         weight={2}
                     />
-                </Map>
+                </MapContainer>,
             );
             updateProps(wrapper, { color: 'black' });
             expect(setStyleSpy).toBeCalledWith({ color: 'black', weight: 2 });

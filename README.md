@@ -13,7 +13,13 @@ for [react-leaflet](https://github.com/PaulLeCam/react-leaflet).
 
 Polyline with text for [Leaflet](https://leafletjs.com) maps. Extends [L.Polyline](http://leafletjs.com/reference.html#polyline).
 
-_Most recently tested with Leaflet 1.7.1 and React-Leaflet 2.8.0_
+_Most recently tested with Leaflet 1.7.1 and React-Leaflet 3.0.5_
+
+## Requirements
+
+The current version of this library supports React Leaflet v3. <br/>
+If you are using React Leaflet v2, please use the v1 version of this library: <br/>
+https://github.com/clementallen/react-leaflet-textpath/tree/v1
 
 ## Installation
 
@@ -26,21 +32,24 @@ npm install react-leaflet-textpath --save
 ### Complete example with react-leaflet
 
 ```jsx
-import { Map, TileLayer } from 'react-leaflet';
+import { MapContainer, TileLayer } from 'react-leaflet';
 import TextPath from 'react-leaflet-textpath';
 
-<Map center={[51.505, -0.09]} zoom={13}>
+<MapContainer center={[51.505, -0.09]} zoom={13}>
     <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     />
     <TextPath
-        positions={[[51.505, -0.09], [51.505, -0.02]]}
+        positions={[
+            [51.505, -0.09],
+            [51.505, -0.02],
+        ]}
         text="Polyline text"
         center
         offset={10}
     />
-</Map>;
+</MapContainer>;
 ```
 
 ### \<TextPath />
@@ -55,7 +64,7 @@ import TextPath from 'react-leaflet-textpath';
     offset={10}
     orientation={20}
     attributes={{
-        'font-size': 20
+        'font-size': 20,
     }}
 />
 ```

@@ -1,6 +1,6 @@
 {
     "name": "react-leaflet-textpath",
-    "version": "1.0.9",
+    "version": "2.0.0-0",
     "description": "React wrapper of leaflet-textpath",
     "main": "dist/index.js",
     "module": "src/index.js",
@@ -28,6 +28,7 @@
         "react",
         "leaflet",
         "react-leaflet",
+        "react-leaflet-v3",
         "leaflet-textpath",
         "react-leaflet-textpath"
     ],
@@ -42,22 +43,22 @@
         "babel-eslint": "^10.1.0",
         "babel-jest": "^26.6.3",
         "enzyme": "^3.11.0",
-        "eslint": "^7.16.0",
-        "eslint-plugin-prettier": "^3.3.0",
-        "eslint-plugin-react": "^7.21.5",
+        "eslint": "^7.18.0",
+        "eslint-plugin-prettier": "^3.3.1",
+        "eslint-plugin-react": "^7.22.0",
         "jest": "^26.6.3",
         "leaflet": "^1.7.1",
-        "np": "^7.1.0",
+        "np": "^7.2.0",
         "prettier": "^2.2.1",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
-        "react-leaflet": "^2.8.0"
+        "react-leaflet": "^3.0.0"
     },
     "peerDependencies": {
         "leaflet": "^1.0.0",
         "react": "^15.0.0 || ^16.0.0 || ^17.0.0",
         "react-dom": "^15.0.0 || ^16.0.0 || ^17.0.0",
-        "react-leaflet": "^2.0.0"
+        "react-leaflet": "^3.0.0"
     },
     "dependencies": {
         "leaflet-textpath": "^1.2.3"
