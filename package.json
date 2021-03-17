@@ -4,6 +4,7 @@
     "description": "React wrapper of leaflet-textpath",
     "main": "dist/index.js",
     "module": "src/index.ts",
+    "types": "types/index.d.ts",
     "scripts": {
         "test": "jest",
         "cover": "jest --coverage --collectCoverageFrom=src/**/*.js",
@@ -12,7 +13,9 @@
         "changelog": "auto-changelog -p --tag-prefix v",
         "release": "np",
         "version": "npm run changelog && git add CHANGELOG.md",
-        "build": "babel src --extensions \".ts\" --out-dir dist",
+        "build": "npm run build:js && npm run build:types",
+        "build:js": "babel src --extensions \".ts\" --out-dir dist",
+        "build:types": "tsc --emitDeclarationOnly",
         "prepublishOnly": "npm run build"
     },
     "repository": {
