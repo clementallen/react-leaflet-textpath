@@ -2,8 +2,8 @@
     "name": "react-leaflet-textpath",
     "version": "2.0.0",
     "description": "React wrapper of leaflet-textpath",
-    "main": "dist/index.js",
-    "module": "src/index.ts",
+    "main": "cjs/index.js",
+    "module": "esm/index.ts",
     "types": "types/index.d.ts",
     "scripts": {
         "test": "jest",
@@ -13,9 +13,11 @@
         "changelog": "auto-changelog -p --tag-prefix v",
         "release": "np",
         "version": "npm run changelog && git add CHANGELOG.md",
-        "build": "npm run build:js && npm run build:types",
-        "build:js": "babel src --extensions \".ts\" --out-dir dist",
+        "build:clean": "rm -rf cjs esm types",
+        "build:cjs": "babel src --out-dir cjs --extensions .ts,.tsx",
+        "build:esm": "cross-env BABEL_ENV=esm babel src --out-dir esm --extensions .ts,.tsx",
         "build:types": "tsc --emitDeclarationOnly",
+        "build": "yarn run build:clean && yarn run build:cjs && yarn run build:esm && yarn run build:types",
         "prepublishOnly": "npm run build"
     },
     "repository": {
@@ -48,6 +50,7 @@
         "babel-core": "^7.0.0-bridge.0",
         "babel-eslint": "^10.1.0",
         "babel-jest": "^26.6.3",
+        "cross-env": "^7.0.3",
         "enzyme": "^3.11.0",
         "eslint": "^7.18.0",
         "eslint-plugin-prettier": "^3.3.1",
