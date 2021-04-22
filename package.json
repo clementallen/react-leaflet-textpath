@@ -17,7 +17,7 @@
         "build:cjs": "babel src --out-dir cjs --extensions .ts,.tsx",
         "build:esm": "cross-env BABEL_ENV=esm babel src --out-dir esm --extensions .ts,.tsx",
         "build:types": "tsc --emitDeclarationOnly",
-        "build": "yarn run build:clean && yarn run build:cjs && yarn run build:esm && yarn run build:types",
+        "build": "npm run build:clean && npm run build:cjs && npm run build:esm && npm run build:types",
         "prepublishOnly": "npm run build"
     },
     "repository": {
