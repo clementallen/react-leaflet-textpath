@@ -1,8 +1,31 @@
-import { createPathComponent } from '@react-leaflet/core';
-import { Polyline as LeafletPolyline } from 'leaflet';
+import {
+    createPathComponent,
+    LeafletContextInterface,
+    PathProps,
+} from '@react-leaflet/core';
+import {
+    LatLngExpression,
+    Polyline as LeafletPolyline,
+    TextPathOptions,
+} from 'leaflet';
 import 'leaflet-textpath';
+import { PropsWithChildren } from 'react';
 
-function createLeafletElement(
+interface ReactLeafletTextPathBaseProps {
+    /**
+     * The text to display over the polyline.
+     */
+    text: string;
+    /**
+     * The positions to use for the polyline.
+     */
+    positions: LatLngExpression[];
+}
+export type ReactLeafletTextPathProps = TextPathOptions &
+    PathProps &
+    PropsWithChildren<ReactLeafletTextPathBaseProps>;
+
+const createLeafletElement = (
     {
         // Required TextPath attributes.
         text,
@@ -16,9 +39,9 @@ function createLeafletElement(
         attributes,
         // PolyLine options.
         ...options
-    },
-    ctx,
-) {
+    }: ReactLeafletTextPathProps,
+    ctx: LeafletContextInterface,
+) => {
     const instance = new LeafletPolyline(positions, options);
     instance.setText(text, {
         repeat,
@@ -29,10 +52,10 @@ function createLeafletElement(
         attributes,
     });
     return { instance, context: { ...ctx, overlayContainer: instance } };
-}
+};
 
-function updateLeafletElement(
-    layer,
+const updateLeafletElement = (
+    layer: LeafletPolyline,
     {
         // Required TextPath attributes.
         text,
@@ -46,9 +69,9 @@ function updateLeafletElement(
         attributes,
         // PolyLine options.
         ...options
-    },
-    prevProps,
-) {
+    }: ReactLeafletTextPathProps,
+    prevProps: ReactLeafletTextPathProps,
+) => {
     // Set null first, to reset the text displayed.
     layer.setText(null);
     if (positions !== prevProps.positions) layer.setLatLngs(positions);
@@ -61,6 +84,11 @@ function updateLeafletElement(
         orientation,
         attributes,
     });
-}
+};
 
-export default createPathComponent(createLeafletElement, updateLeafletElement);
+const ReactLeafletTextPath = createPathComponent<
+    LeafletPolyline,
+    ReactLeafletTextPathProps
+>(createLeafletElement, updateLeafletElement);
+
+export default ReactLeafletTextPath;
