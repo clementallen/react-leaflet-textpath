@@ -1,5 +1,6 @@
 module.exports = {
     setupFiles: ['<rootDir>/test.config.js'],
+    testEnvironment: 'jsdom',
     coverageThreshold: {
         global: {
             branches: 100,
