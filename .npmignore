@@ -8,3 +8,5 @@ coverage/
 .codeclimate.yml
 jest.config.js
 test.config.js
+.prettierrc
+tsconfig.json
