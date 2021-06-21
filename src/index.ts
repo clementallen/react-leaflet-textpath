@@ -21,6 +21,7 @@ interface ReactLeafletTextPathBaseProps {
      */
     positions: LatLngExpression[];
 }
+
 export type ReactLeafletTextPathProps = TextPathOptions &
     PathProps &
     PropsWithChildren<ReactLeafletTextPathBaseProps>;
